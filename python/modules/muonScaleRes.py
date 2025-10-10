@@ -31,6 +31,7 @@ class muonScaleRes(Module):
         #print(f"[getPtCorr] Muon pt {muon.pt:.2f} scale corrected to {scale_corr:.2f} (is_mc={self.is_mc})")
 
         if self.is_mc:
+            eventNumber  = int(eventNumber & 0x7FFFFFFF)
             smear_corr = self.corrModule.pt_resol(scale_corr, muon.eta, muon.phi, muon.nTrackerLayers, eventNumber, lumiNumber)
             #print(f"muon.eta, muon.nTrackerLayers", muon.eta, muon.nTrackerLayers)
             #if abs(smear_corr) > 10*muon.pt:
